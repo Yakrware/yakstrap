@@ -13,11 +13,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://github.com/Yakrware/yakstrap"
   spec.license       = "MIT"
 
-  spec.files         = Dir["{lib,app}/**/*"] + ["MIT-LICENSE", "README.md"] 
+  spec.files         = Dir["{lib,app}/**/*"] + ["LICENSE", "README.md"] 
   spec.require_paths = ["lib"]
 
-  gem.add_dependency "railties", "> 3.1"
-  gem.add_dependency "sass-rails", '> 3.2.3'
+  spec.add_dependency "railties", "> 3.1"
+  spec.add_development_dependency "sass-rails", '> 3.2.3'
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end

@@ -1,0 +1,52 @@
+$gutter-width: 0.01;
+
+@mixin columns($column-span: 1) {
+    $columns:           12 / $column-span;
+    $total-gutter:      $gutter-width * (13);
+    $column-span-width: (1 - $total-gutter) / $columns + ($column-span - 1) * $gutter-width;
+
+    width:                          percentage( $column-span-width );
+}
+
+.container{
+  margin: 0px auto;
+  @include clearfix();
+  
+  @media (min-width: 480px){
+    max-width: 480px;
+  }
+  @media (min-width: 640px){    
+    max-width: 640px;
+  }
+  @media (min-width: 720px){
+    max-width: 720px;    
+  }
+  @media (min-width: 960px){
+    max-width: 960px;    
+  }
+  @media (min-width: 1080px){
+    max-width: 1080px;    
+  }
+  @media (min-width: 1260px){
+    max-width: 1260px;
+  }
+}
+
+// row is not required, but it includes clearfix to hopefully clear up some issues
+.row{
+  @include clearfix();
+}
+
+@for $i from 1 through 12{
+  .span#{$i}{
+    margin-left: percentage($gutter-width);
+    @media (max-width: 480px){
+      float: none;
+      display:block;
+    }
+    @media (min-width: 481px){
+      float: left;
+      @include columns($i);
+    }
+  }
+}

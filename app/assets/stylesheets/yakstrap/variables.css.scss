@@ -1,0 +1,33 @@
+
+// Fonts
+$font_include: 'http://fonts.googleapis.com/css?family=Ubuntu|Roboto';
+$body_font: 'Roboto';
+$header_font: 'Ubuntu';
+ 
+
+// Colors
+$white: #FDFDFD;
+
+// http://colorschemedesigner.com/
+$primary: #2E3E46;
+$primary_font_color: $white;
+
+$secondary: #544D3D;
+$secondary_font_color: $white;
+
+$tertiary: #C5EDB2;
+$tertiary_font_color: #333;
+
+// Red tone, used for alerts
+$red: #A82117;
+$red_font_color: $white;
+
+// Green tone for successes
+$green: #395939; // mid
+$green_font_color: $white;
+
+$yellow: #FEFEDE;
+$yellow_font_color: #333;
+
+$background: $white;
+$background_font_color: #333;

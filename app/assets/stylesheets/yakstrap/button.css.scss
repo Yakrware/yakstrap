@@ -1,0 +1,63 @@
+.btn, input[type='submit']{
+  display: inline-block;
+  background: $secondary;
+  padding: 5px 10px;
+  margin: 3px;
+  color: $secondary_font_color;
+  border: 1px darken($secondary, 20%) solid;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  outline: 0;
+  @include shadow(1px);
+  
+  &:hover{
+    color: lighten($secondary_font_color, 10%);
+    background: lighten($secondary, 10%);
+  }
+  
+  &:active{  
+    color: darken($secondary_font_color, 10%);
+    background: darken($secondary, 10%);
+    @include shadow(0px);
+  }
+  
+  &.btn-success{
+    background: $green;
+    color: $green_font_color;
+    &:hover{
+      color: lighten($green_font_color, 10%);
+      background: lighten($green, 10%);
+    }
+    &:active{  
+      color: darken($green_font_color, 10%);
+      background: darken($green, 10%);
+    }
+  }
+  
+  &.btn-danger{
+    background: $red;
+    color: $red_font_color;
+    &:hover{
+      color: lighten($red_font_color, 10%);
+      background: lighten($red, 10%);
+    }
+    &:active{  
+      color: darken($red_font_color, 10%);
+      background: darken($red, 10%);
+    }
+  }
+}
+
+input[type='submit']{
+  font-family: Roboto;
+  padding: 4px 9px;
+}
+
+.btn-group{
+  &>.btn{
+    float: left;
+  }
+  @include clearfix;
+}

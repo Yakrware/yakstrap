@@ -1,0 +1,171 @@
+@mixin positionTip($location: 'top'){
+  $alignment: 'bottom';
+  $offset: -3px;
+  $left: auto;
+  $top: auto;
+  @if $location == 'top' {
+    $alignment: 'bottom';
+    $left: $offset;
+  } @else if $location == 'bottom' {
+    $alignment: 'top';
+    $left: $offset;
+  } @else if $location == 'left' {
+    $alignment: 'right';
+    $top: $offset;
+  } @else if $location == 'right' {
+    $alignment: 'left';
+    $top: $offset;
+  }
+  
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  margin: auto;
+    
+  top: $top;
+  left: $left;
+  #{$alignment}: 10px;
+  margin-#{$alignment}: 100%;
+}
+
+@mixin positionArrow($location: 'top'){
+  $alignment: 'bottom';
+  $left: auto;
+  $top: auto;
+  @if $location == 'top' {
+    $alignment: 'bottom';
+    $left: 50%;
+  } @else if $location == 'bottom' {
+    $alignment: 'top';
+    $left: 50%;
+  } @else if $location == 'left' {
+    $alignment: 'right';
+    $top: 50%;
+  } @else if $location == 'right' {
+    $alignment: 'left';
+    $top: 50%;
+  }
+  
+  visibility: hidden;
+  transition: visibility 0s linear 0.2s, opacity 0.2s linear; 
+  position: absolute;
+  border: solid;
+  content: "";
+  z-index: 99;
+  border-color: transparent;
+  border-width: 6px;
+  opacity: 0;
+
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  margin: auto;
+  
+  top: $top;
+  left: $left;
+  
+  #{$alignment}: 4px;
+  margin-#{$alignment}: 100%;
+  border-#{$location}-color: rgba(darken($primary, 30%),.8);;
+  border-#{$alignment}: 0px;
+}
+
+[data-title]{
+  cursor: pointer;
+  position: relative;
+  
+  &:after{
+    font-family: $body_font;
+    background: darken($primary, 30%);
+    opacity: 0;
+    color: $white;
+    border-radius: 3px;
+    
+    position: absolute;
+    @include positionTip('top');
+    
+    content: attr(data-title);
+    white-space: pre-wrap;
+    padding: 5px 15px;
+    z-index: 98;
+    
+    min-width: 250px;
+    max-width: 400px;
+    visibility: hidden;
+    transition: visibility 0s linear 0.2s, opacity 0.2s linear;
+    
+    @include shadow(2px);  
+  }
+  
+  &:not(i[class^=icon]):before{
+    @include positionArrow('top');
+  }
+  
+  &:before(2){
+    @include positionArrow('top');
+  }
+  
+  &[data-placement="bottom"]{
+    &:after{
+      @include positionTip('bottom');
+    }
+    
+    &:not(i[class^=icon]):before{
+      @include positionArrow('bottom');
+    }
+    
+    &:before(2){
+      @include positionArrow('bottom');
+    }
+  }
+  
+  &[data-placement="left"]{
+    &:after{
+      @include positionTip('left');
+    }
+    
+    &:not(i[class^=icon]):before{
+      @include positionArrow('left');
+    }
+    
+    &:before(2){
+      @include positionArrow('left');
+    }
+  }
+  
+  &[data-placement="right"]{
+    &:after{
+      @include positionTip('right');
+    }
+    
+    &:not(i[class^=icon]):before{
+      @include positionArrow('right');
+    }
+    
+    &:before(2){
+      @include positionArrow('right');
+    }
+  }
+  
+  &:hover{
+    &:after{
+      opacity: 0.9;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+    
+    &:not(i[class^=icon]):before{
+      opacity: 0.9;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+    
+    &:before(2){
+      opacity: 0.9;
+      visibility: visible;
+      transition-delay: 0s;
+    }    
+  }
+}

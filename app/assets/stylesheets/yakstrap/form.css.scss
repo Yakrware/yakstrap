@@ -1,0 +1,82 @@
+@mixin inputBase(){
+  border: 1px solid lighten($secondary, 30%);
+  border-radius: 2px;
+  background: lighten($background, 10%);
+  color: $background_font_color;
+  padding: 3px 5px;
+  margin: 3px 2px;
+}
+
+@mixin inputWidth( $offset: 0px ){
+  @media (min-width: 480px){
+    width: 80px + $offset;
+  }
+  @media (min-width: 640px){    
+    width: 120px + $offset;
+  }
+  @media (min-width: 720px){
+    width: 160px + $offset;
+  }
+  @media (min-width: 960px){
+    width: 200px + $offset;
+  }
+  
+  &.tiny{
+    width: 80px + $offset;
+  }
+  &.small{
+    width: 160px + $offset;
+  }
+  &.normal{
+    width: 200px + $offset;
+  }
+  &.large{
+    width: 300px + $offset;
+  }
+  &.x-large{
+    width: 400px + $offset;
+  }
+}
+
+input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]), textarea{
+  @include inputBase();
+  @include inputWidth();
+}
+
+label{
+  display: inline-block;
+  margin: 10px 0px 0px;
+  @media (min-width: 480px){
+    min-width: 60px;
+  }
+  @media (min-width: 640px){    
+    min-width: 80px;
+  }
+  @media (min-width: 720px){
+    min-width: 120px;
+  }
+  @media (min-width: 960px){
+    min-width: 160px;
+  }
+}
+
+select{
+  @include inputBase();
+  @include inputWidth(12px);
+}
+
+.error input:not([type="submit"]):not([type="button"]), .error select, input:not([type="submit"]):not([type="button"]).error, select.error{
+  border-color: $red;
+}
+
+.error label, label.error{  
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: $red;
+  -moz-text-decoration-line: underline;
+  -moz-text-decoration-style: wavy;
+  -moz-text-decoration-color: $red;
+  -webkit-text-decoration-line: underline;
+  -webkit-text-decoration-style: wavy;
+  -webkit-text-decoration-color: $red;
+}
