@@ -12,6 +12,10 @@
   outline: 0;
   @include shadow(1px);
   
+  &:visited{
+    color: $secondary_font_color;
+  }
+  
   &:hover{
     color: lighten($secondary_font_color, 10%);
     background: lighten($secondary, 10%);
