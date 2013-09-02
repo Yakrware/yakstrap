@@ -44,6 +44,10 @@ h1,h2,h3,h4,h5,h6{
   float: left;
 }
 
+.center{
+  text-align: center;
+}
+
 .relative{
   position: relative;
 }
@@ -96,12 +100,12 @@ hr{
   }
   
   td{
-    border-top: 1px solid lighten($secondary, 20%);
+    border-top: 1px solid $black;
     padding: 5px 5px 5px 0px;
     
   }
 }
 
 td.expand{
-  width: 100%;
+  width: 50%;
 }

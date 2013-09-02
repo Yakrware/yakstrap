@@ -1,11 +1,11 @@
 $gutter-width: 0.01;
 
-@mixin columns($column-span: 1) {
+@function columnwidth($column-span: 1) {
     $columns:           12 / $column-span;
     $total-gutter:      $gutter-width * (13);
     $column-span-width: (1 - $total-gutter) / $columns + ($column-span - 1) * $gutter-width;
 
-    width:                          percentage( $column-span-width );
+    @return percentage( $column-span-width );
 }
 
 .container{
@@ -27,9 +27,6 @@ $gutter-width: 0.01;
   @media (min-width: 1080px){
     max-width: 1080px;    
   }
-  @media (min-width: 1260px){
-    max-width: 1260px;
-  }
 }
 
 // row is not required, but it includes clearfix to hopefully clear up some issues
@@ -46,7 +43,16 @@ $gutter-width: 0.01;
     }
     @media (min-width: 481px){
       float: left;
-      @include columns($i);
+      width: columnwidth($i);
+    }
+  }
+}
+
+@for $j from 1 through 12{
+  .offset#{$j}{
+    margin-left: columnwidth($j) + percentage($gutter-width);
+    @media (max-width: 480px){
+      margin-left: 0px;
     }
   }
 }
